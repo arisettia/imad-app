@@ -22,8 +22,8 @@ app.get('/test-db', function(req, res) {
         } else {
             res.send(JASON.stringify(result))
         }
-    }
-}
+    });
+});
 
 var app = express();
 app.use(morgan('combined'));
