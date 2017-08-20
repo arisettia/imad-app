@@ -2,6 +2,29 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var Pool = request('pg').Pool;
+
+var config = {
+    user : 'arisettia',
+    database: 'arisettia',
+    host: 'db.imad.hasura-app.in',
+    port: '5432',
+    password: process.env.DB_PASSWORD,
+};
+
+var pool = new Pool(config);
+app.get('/test-db', function(req, res) {
+    /// make a select
+    //return response
+    pool.query('Select * from test', function(err, result) {
+        if(err) {
+            res.status(500).send(err.toString());
+        } else {
+            res.send(JASON.stringify(result))
+        }
+    }
+}
+
 var app = express();
 app.use(morgan('combined'));
 
