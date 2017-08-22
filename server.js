@@ -8,12 +8,11 @@ app.use(morgan('combined'));
 var Pool = require('pg').Pool;
 
 var config = {
-    user : 'arisettia',
-    database: 'arisettia',
-    host: 'db.imad.hasura-app.in',
-    port: '5432',
-    password: process.env.DB_PASSWORD
-};
+user: 'arisettia',
+database: 'arisettia',
+host: 'db.imad.hasura-app.io',
+password: process.env.DB_PASSWORD
+}
 
 var pool = new Pool(config);
 app.get('/test-db', function (req, res) {
