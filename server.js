@@ -13,17 +13,6 @@ var config = {
 };
 
 var pool = new Pool(config);
-app.get('/test-db', function(req, res) {
-    /// make a select
-    //return response
-    pool.query('Select * from test', function(err, result) {
-        if(err) {
-            res.status(500).send(err.toString());
-        } else {
-            res.send(JASON.stringify(result))
-        }
-    });
-});
 
 var app = express();
 app.use(morgan('combined'));
