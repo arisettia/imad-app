@@ -2,10 +2,17 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var crypto = require('crypto');
+
 var app = express();
 app.use(morgan('combined'));
 
 var Pool = require('pg').Pool;
+
+function hash(input, salt){
+    var hashed = crypto.pbkdf2Sync(input, salt, 1000, 512, 'sha512');
+    return hashed.toString('hex')
+}
 
 var config = {
 user: 'arisettia',
